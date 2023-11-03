@@ -9,3 +9,8 @@ The introduction of this project will be completed later. Here we will record th
 4. Type in `create-react-app <react_app_name>`.
 5. Use `cd` to navigate to the application folder.
 6. This is the root folder of your project. Type in `npm start` to open browser preview.
+
+## Running React application created in the codespace on other branches
+
+The necessary node modules are too much to synchronize to the remote repo. As a result, necessary node modules will never reside on the remote repo.  
+1. After opening the codespace and navigate to the app root folder, run `npm install` in the terminal. This will install all dependent packages used in the application.
