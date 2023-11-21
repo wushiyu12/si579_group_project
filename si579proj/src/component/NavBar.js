@@ -9,30 +9,28 @@ import Form from 'react-bootstrap/Form';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
+import { Link } from "react-router-dom";
 
 const NavBar = () => {
-    // return (
-    //     <>
-    //         <nav className="navbar navbar-light" style={{ backgroundColor: '#e3f2fd' }}>
-    //             <div className="collapse navbar-collapse" id="navbarSupportedContent">
-    //                 <ul className="navbar-nav">
-    //                     <li className="nav-item">
-    //                         <Button className="nav-link btn">Link</Button>
-    //                     </li>
-    //                 </ul>
-    //             </div>
-    //         </nav>
-    //     </>
-    // );
     return (
         <Navbar expand="lg" className="bg-body-tertiary">
           <Container>
-            <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+            <Navbar.Brand href="#home">SI 579 Team Project</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="me-auto">
-                <Nav.Link href="#home">Home</Nav.Link>
-                <Nav.Link href="#link">Link</Nav.Link>
+                <Nav.Link href="#home">
+                  <Link to="/">Home</Link>
+                </Nav.Link>
+                <Nav.Link href="#link">
+                  <Link to="/listView">List View</Link>
+                </Nav.Link>
+                <Nav.Link href="#link">
+                  <Link to="/mapView">Map View</Link>
+                </Nav.Link>
+                <Nav.Link href="#link">
+                  <Link to="/calendarView">Calendar View</Link>
+                </Nav.Link>
                 <NavDropdown title="Dropdown" id="basic-nav-dropdown">
                   <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
                   <NavDropdown.Item href="#action/3.2">
