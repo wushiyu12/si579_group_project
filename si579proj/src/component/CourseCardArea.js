@@ -18,7 +18,7 @@ import { useState } from 'react';
 
 const CourseCardArea = () => {
     const [courses, setCourses] = useState(courseList);
-    const arr = courses.reduce((item, key, index) => (index % 3 == 0 ? item.push([key]) : item[item.length-1].push(key)) && item, []);
+    const arr = courses.reduce((item, key, index) => (index % 4 == 0 ? item.push([key]) : item[item.length-1].push(key)) && item, []);
     return (
         <Container>
             {arr.map(group => 
