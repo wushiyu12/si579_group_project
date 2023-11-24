@@ -1,6 +1,6 @@
 import React from 'react';
 import {Form, InputGroup } from 'react-bootstrap';
-import { useState, useEffect, Context } from 'react';
+import { useState, useEffect} from 'react';
 import {courseList} from '../util/course';
 import ListGroup from 'react-bootstrap/ListGroup';
 
