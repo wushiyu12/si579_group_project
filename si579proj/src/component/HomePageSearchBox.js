@@ -5,6 +5,7 @@ import { useState } from 'react';
 // import {courseList} from '../util/course';
 // import ListGroup from 'react-bootstrap/ListGroup';
 import SearchBar from './SearchBar';
+import CourseProfile from './CourseProfile';
 
 const SearchCard = () => {
 
@@ -72,7 +73,7 @@ const SearchCard = () => {
             </ListGroup> */}
 
         <SearchBar setChooseRes = {setChooseRes}></SearchBar>
-        {chooseRes && <text> {chooseRes['Course Title']} </text>}
+        {chooseRes && <CourseProfile chooseRes = {chooseRes}></CourseProfile>}
         </Card.Body>
         </Card>
     );
