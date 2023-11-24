@@ -1,12 +1,27 @@
-import React, { createContext, useState, useContext } from 'react';
+import React, { createContext, useState, useContext,useEffect} from 'react';
 
 // Create a Context object for the backpack data
 const BackPackContext = createContext();
 
 // Create a Provider component to encapsulate the backpack state logic
 const BackPackProvider = ({ children }) => {
+  
   // State hook to keep track of the courses in the backpack
-  const [backpack, setBackpack] = useState([]);
+  // Initialize the state with data from localStorage if available
+
+  // notice useState take the default value as an arg
+  // using the return in arrow function to set to init different value
+  const [backpack, setBackpack] = useState(() => {
+    const localData = localStorage.getItem('backpack');
+    return localData ? JSON.parse(localData) : [];
+  });
+
+
+  // using use effect to trigger saving if there is change in backpack
+  // hence localstorage will have all we want
+  useEffect(() => {
+    localStorage.setItem('backpack', JSON.stringify(backpack));
+  }, [backpack]);
 
   // Function to add a new course to the backpack, avoiding duplicates
   const addToBackpack = (newCourse) => {

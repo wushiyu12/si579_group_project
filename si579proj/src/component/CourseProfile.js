@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import {Card, Button} from 'react-bootstrap';
 import { useBackPack } from './BackPackContext';
 
@@ -9,6 +9,10 @@ const CourseProfile = (props) => {
   // const value = { backpack, addToBackpack, removeFromBackpack };
 
   const { backpack, addToBackpack, removeFromBackpack } = useBackPack();
+  const [isAdd,setIsAdd] = useState(false);
+  useEffect(() => {
+    setIsAdd(false);
+  }, [props.chooseRes]);
 
   return (
     <Card  className='shadow mx-auto p-3 my-3'>
@@ -20,12 +24,13 @@ const CourseProfile = (props) => {
       <Card.Title className="fs-5 text-start">{`Credits : ${props.chooseRes["Credits"]}`}</Card.Title>
       {/* align the button to left */}
       <div className="text-start">
-          <Button variant="primary" 
+          <Button variant="primary" disabled = {isAdd}
             onClick={() => {
               addToBackpack(props.chooseRes);
+              setIsAdd(true);
               console.log(backpack);
             }}> 
-            Add to Backpack
+            {!isAdd ? "Add to Backpack" : "Course Added"}
           </Button>
       </div>
     </Card>
