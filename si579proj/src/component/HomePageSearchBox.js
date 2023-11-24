@@ -1,39 +1,43 @@
 import React from 'react';
 import {Card, Row, Form, InputGroup } from 'react-bootstrap';
-import { useState, useEffect, Context } from 'react';
-import {courseList} from '../util/course';
-import ListGroup from 'react-bootstrap/ListGroup';
+import { useState } from 'react';
+// import { useState, useEffect, Context } from 'react';
+// import {courseList} from '../util/course';
+// import ListGroup from 'react-bootstrap/ListGroup';
+import SearchBar from './SearchBar';
 
 const SearchCard = () => {
 
-    const [results, setResults] = useState([])
-    const [inputValue, setInputValue] = useState('');
+    // const [results, setResults] = useState([])
+    // const [inputValue, setInputValue] = useState('');
 
-    const checkInput = (e) => {
-        setInputValue(e.target.value);
-        const filtered = courseList
-          .filter((course) => course.code.toLowerCase().includes(e.target.value.toLowerCase()))
-        setResults(filtered)
-    }
+    // const checkInput = (e) => {
+    //     setInputValue(e.target.value);
+    //     const filtered = courseList
+    //       .filter((course) => course.code.toLowerCase().includes(e.target.value.toLowerCase()))
+    //     setResults(filtered)
+    // }
 
-    const chooseResult = (choice) => {
-        setInputValue(choice);
-        setResults([]);
-    }
+    // const chooseResult = (choice) => {
+    //     setInputValue(choice);
+    //     setResults([]);
+    // }
 
-    const clearResult = () => {
-        setResults([]);
-    }
+    // const clearResult = () => {
+    //     setResults([]);
+    // }
 
-    useEffect(() => {
-        // Add event listener for the whole page
-        window.addEventListener('click', clearResult);
+    // useEffect(() => {
+    //     // Add event listener for the whole page
+    //     window.addEventListener('click', clearResult);
     
-        // Cleanup the event listener when the component unmounts
-        return () => {
-          window.removeEventListener('click', clearResult);
-        };
-      }, []); 
+    //     // Cleanup the event listener when the component unmounts
+    //     return () => {
+    //       window.removeEventListener('click', clearResult);
+    //     };
+    //   }, []); 
+
+    const [chooseRes, setChooseRes] = useState(null);
 
     return (
         <Card style={{ width: '67rem' }} className='shadow-lg mx-auto p-3 my-3'>
@@ -47,7 +51,9 @@ const SearchCard = () => {
             <Card.Text>
                 Look up specific courses offered by the University of Michigan School of Information, Ann Arbor Campus.    
             </Card.Text>
-            <InputGroup className="search-bar-container">
+
+
+            {/* <InputGroup className="search-bar-container">
                 <Form.Control
                 type="search"
                 value = {inputValue}
@@ -63,7 +69,10 @@ const SearchCard = () => {
                         {`${course.code} ${course['Course Title']}`}
                     </ListGroup.Item>
                     )}
-            </ListGroup>
+            </ListGroup> */}
+
+        <SearchBar setChooseRes = {setChooseRes}></SearchBar>
+        {chooseRes && <text> {chooseRes['Course Title']} </text>}
         </Card.Body>
         </Card>
     );
