@@ -1,21 +1,23 @@
-import React from 'react';
-import { Routes, Route } from 'react-router-dom';
-import homepage from './pages/homepage';
-import listView from './pages/listView';
-import mapView from './pages/mapView';
-import calendarView from './pages/calendarView';
+// The main could be removed later, since the util is in app now
 
-const Main = () => {
-  return (
-    <>
-      <Routes>
-        <Route exact path='/' Component={homepage}></Route>
-        <Route path='/listView' Component={listView}></Route>
-        <Route path='/mapView' Component={mapView}></Route>
-        <Route path='/calendarView' Component={calendarView}></Route>
-      </Routes>
-    </>
-  );
-}
+// import React from 'react';
+// import { Routes, Route } from 'react-router-dom';
+// import homepage from './pages/homepage';
+// import listView from './pages/listView';
+// import mapView from './pages/mapView';
+// import calendarView from './pages/calendarView';
 
-export default Main;
+// const Main = () => {
+//   return (
+//     <>
+//       <Routes>
+//         <Route exact path='/' Component={homepage}></Route>
+//         <Route path='/listView' Component={listView}></Route>
+//         <Route path='/mapView' Component={mapView}></Route>
+//         <Route path='/calendarView' Component={calendarView}></Route>
+//       </Routes>
+//     </>
+//   );
+// }
+
+// export default Main;

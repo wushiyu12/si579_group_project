@@ -1,10 +1,13 @@
+// this courseList will need to be changed in later work with the fetch data
 import {courseList} from '../util/course';
+
 import CourseCard from './CourseCard';
 import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 import CardGroup from 'react-bootstrap/CardGroup';
 import { useState } from 'react';
+import Row from 'react-bootstrap/Row';
+// import Row from 'react-bootstrap/Row';
+// import Col from 'react-bootstrap/Col';
 
 // const CourseCardArea = () => {
 //     return (
@@ -22,9 +25,9 @@ const CourseCardArea = () => {
     return (
         <Container>
             {arr.map(group => 
-                <row><CardGroup>
-                    {group.map(course => <CourseCard code={course['code']} title={course['Course Title']} description={course['Course Description']} />)}
-                </CardGroup></row>
+                <Row><CardGroup>
+                    {group.map((course,index) => <CourseCard key = {index} code={course['code']} title={course['Course Title']} description={course['Course Description']} credits = {course['Credits']}/>)}
+                </CardGroup></Row>
             )}
         </Container>
     )

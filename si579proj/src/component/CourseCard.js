@@ -5,18 +5,24 @@ import Offcanvas from 'react-bootstrap/Offcanvas';
 import { useState } from 'react';
 
 const CourseCard = (props) => {
-    // return ("I will be card,one day,one day,one....");
+    
     const [show, setShow] = useState(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
+
+    const displayCredits = props.credits > 4 ? 'TBA' : props.credits;
+
     return (
-        <Card style={{ width: '24rem'}}>
-          <Card.Img variant="top" src="https://yt3.googleusercontent.com/ytc/APkrFKY7Ofoz3DRteo2LvDggtO1FAUcsEa-sGL64SM9aDQ=s900-c-k-c0x00ffffff-no-rj" />
+        <Card style={{ width: '24rem'}} className=' mx-2 my-2 mb-3 border'>
+          {/* we might not need the picture */}
+          {/* <Card.Img variant="top" src="https://yt3.googleusercontent.com/ytc/APkrFKY7Ofoz3DRteo2LvDggtO1FAUcsEa-sGL64SM9aDQ=s900-c-k-c0x00ffffff-no-rj" /> */}
           <Card.Body style={{display: 'flex', flexDirection: 'column', justifyContent: 'space-between'}}>
             <div>
-              <Card.Title>{props.code}</Card.Title>
-              <Card.Text>
+              <Card.Title className="text-start">{props.code}</Card.Title>
+              <Card.Text className="text-start">
                 {props.title}
+                <br />
+                Units: {displayCredits}
               </Card.Text>
             </div>
             <div style={{marginTop: '12px'}}>

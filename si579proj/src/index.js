@@ -2,13 +2,21 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from 'react-router-dom';
+// import reportWebVitals from './reportWebVitals';
 
+
+// important
+// since router is configured here
+// we do not need to configure that again in app 
+
+// I move the component from main to app for better use react context
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render((
   <BrowserRouter>
-    <App /> {/* The various pages will be displayed by the `Main` component. */}
+    <App /> 
+    {/* The various pages will be displayed by the `Main` component. */}
+    {/* but do we reall need the main? */}
   </BrowserRouter>
   )
 );
