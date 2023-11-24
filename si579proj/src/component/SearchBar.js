@@ -16,7 +16,7 @@ const SearchBar = (props) => {
     const checkInput = (e) => {
         setInputValue(e.target.value);
         const filtered = courseList
-          .filter((course) => course.code.toLowerCase().includes(e.target.value.toLowerCase()))
+          .filter((course) => (course.code + course['Course Title']).toLowerCase().includes(e.target.value.toLowerCase()))
         setResults(filtered)
     }
 
