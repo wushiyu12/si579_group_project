@@ -4,6 +4,10 @@ import { useState, useEffect, Context } from 'react';
 import {courseList} from '../util/course';
 import ListGroup from 'react-bootstrap/ListGroup';
 
+// this component take a obj course list as arg
+// use props.setChooseRes to pass its choosen res to 
+// parent component
+
 const SearchBar = (props) => {
 
     const [results, setResults] = useState([])

@@ -1,6 +1,9 @@
 // this courseList will need to be changed in later work with the fetch data
 import {courseList} from '../util/course';
 
+// a seperate search logic is needed here
+// since the list view need to include all related course
+
 import CourseCard from './CourseCard';
 import Container from 'react-bootstrap/Container';
 import CardGroup from 'react-bootstrap/CardGroup';
