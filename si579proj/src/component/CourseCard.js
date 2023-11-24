@@ -13,7 +13,7 @@ const CourseCard = (props) => {
     const displayCredits = props.credits > 4 ? 'TBA' : props.credits;
 
     return (
-        <Card style={{ width: '24rem'}} className=' mx-2 my-2 mb-3 border'>
+        <Card style={{ width: '24rem', height: '12rem'}} className=' mx-1 my-1 border'>
           {/* we might not need the picture */}
           {/* <Card.Img variant="top" src="https://yt3.googleusercontent.com/ytc/APkrFKY7Ofoz3DRteo2LvDggtO1FAUcsEa-sGL64SM9aDQ=s900-c-k-c0x00ffffff-no-rj" /> */}
           <Card.Body style={{display: 'flex', flexDirection: 'column', justifyContent: 'space-between'}}>

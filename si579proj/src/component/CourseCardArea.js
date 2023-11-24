@@ -6,9 +6,8 @@ import {courseList} from '../util/course';
 
 import CourseCard from './CourseCard';
 import Container from 'react-bootstrap/Container';
-import CardGroup from 'react-bootstrap/CardGroup';
 import { useState } from 'react';
-import Row from 'react-bootstrap/Row';
+// import CardGroup from 'react-bootstrap/CardGroup';
 // import Row from 'react-bootstrap/Row';
 // import Col from 'react-bootstrap/Col';
 
@@ -24,15 +23,20 @@ import Row from 'react-bootstrap/Row';
 
 const CourseCardArea = () => {
     const [courses, setCourses] = useState(courseList);
-    const arr = courses.reduce((item, key, index) => (index % 4 == 0 ? item.push([key]) : item[item.length-1].push(key)) && item, []);
     return (
-        <Container>
-            {arr.map(group => 
-                <Row><CardGroup>
-                    {group.map((course,index) => <CourseCard key = {index} code={course['code']} title={course['Course Title']} description={course['Course Description']} credits = {course['Credits']}/>)}
-                </CardGroup></Row>
+        <Container><div class="row justify-content-center">
+            {courses.map((course, index) => 
+                <div class="col-auto mb3">
+                    <CourseCard 
+                        key = {index} 
+                        code = {course['code']} 
+                        title = {course['Course Title']} 
+                        description = {course['Course Description']} 
+                        credits = {course['Credits']}
+                    />
+                </div>
             )}
-        </Container>
+        </div></Container>
     )
 };
 export default CourseCardArea
