@@ -24,11 +24,10 @@ import { useState } from 'react';
 const CourseCardArea = () => {
     const [courses, setCourses] = useState(courseList);
     return (
-        <Container><div class="row justify-content-center">
+        <Container><div className = "row justify-content-center">
             {courses.map((course, index) => 
-                <div class="col-auto mb3">
-                    <CourseCard 
-                        key = {index} 
+                <div className = "col-auto mb3" key = {course['code']} >
+                    <CourseCard  
                         code = {course['code']} 
                         title = {course['Course Title']} 
                         description = {course['Course Description']} 

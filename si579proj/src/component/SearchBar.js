@@ -11,7 +11,7 @@ const SearchBar = (props) => {
 
     const [results, setResults] = useState([])
     const [inputValue, setInputValue] = useState('');
-    const [searchMod, setSearchMod] = useState('SearchCode');
+    const [searchMod, setSearchMod] = useState('searchCode');
 
     const handleSelect  = (eventKey) => {
         setSearchMod(eventKey);
@@ -75,13 +75,13 @@ const SearchBar = (props) => {
         <Col sm={'auto'}>
         <Dropdown onSelect={handleSelect}>
             <Dropdown.Toggle variant="outline-primary" id="dropdown-basic">
-            {searchMod === 'SearchCode' ? "Search by Code" : "Search by Description"}
+            {searchMod === 'searchCode' ? "Search by Code" : "Search by Description"}
         </Dropdown.Toggle>
 
         <Dropdown.Menu>
         {/* {searchMod} will be changed later  */}
-                <Dropdown.Item eventKey="SearchCode">Seacrch by Code</Dropdown.Item>
-                <Dropdown.Item eventKey="SearchDes">Seacrch by Description</Dropdown.Item>
+                <Dropdown.Item eventKey="searchCode">Seacrch by Code</Dropdown.Item>
+                <Dropdown.Item eventKey="searchDes">Seacrch by Description</Dropdown.Item>
                 {console.log(searchMod)}
             </Dropdown.Menu>
         </Dropdown>

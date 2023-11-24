@@ -20,7 +20,7 @@ const NavBar = (props) => {
     return (
         <Navbar expand="lg" className="bg-body-tertiary">
           <Container>
-            <Navbar.Brand href="#home">SI 579 Team Project</Navbar.Brand>
+            <Navbar.Brand >SI 579 Team Project</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="me-auto">
@@ -36,33 +36,17 @@ const NavBar = (props) => {
                 <Nav.Link href="#link">
                   <Link to="/calendarView">Calendar View</Link>
                 </Nav.Link>
-                <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-                  <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                  <NavDropdown.Item href="#action/3.2">
-                    Another action
-                  </NavDropdown.Item>
-                  <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-                  <NavDropdown.Divider />
-                  <NavDropdown.Item href="#action/3.4">
-                    Separated link
-                  </NavDropdown.Item>
-                </NavDropdown>
+                
               </Nav>
             </Navbar.Collapse>
-            <Form inline>
-        <Row>
-          <Col xs="auto">
-            <Form.Control
-              type="text"
-              placeholder="Search"
-              className=" mr-sm-2"
-            />
-          </Col>
-          <Col xs="auto">
-            <Button type="submit">Submit</Button>
-          </Col>
-        </Row>
-      </Form>
+
+      {/* the form need to be edited */}
+      {/* a new search bar will be need here */}
+      {/* the search bar need to be different in list view
+      and calender view */}
+      {/* think about using children render to do */}
+
+
           </Container>
         </Navbar>
       );
