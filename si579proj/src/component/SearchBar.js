@@ -101,7 +101,7 @@ const SearchBar = (props) => {
         <Col sm={'auto'}>
         <Dropdown onSelect={handleSelect}>
             <Dropdown.Toggle variant="outline-primary" id="dropdown-basic">
-            {searchMod === 'searchCode' ? "Search by Code" : "Search by Description"}
+            {searchMod === 'searchCode' ? "Search by Name" : "Search by Description"}
         </Dropdown.Toggle>
 
         <Dropdown.Menu>
