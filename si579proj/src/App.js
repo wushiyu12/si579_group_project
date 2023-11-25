@@ -1,24 +1,31 @@
-import logo from './logo.svg';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
+import homepage from './pages/homepage';
+import listView from './pages/listView';
+import mapView from './pages/mapView';
+import calendarView from './pages/CalendarView';
+import { Routes, Route } from 'react-router-dom';
+import { BackPackProvider } from './component/BackPackContext';
+// import { createContext } from 'react';
+// import CourseCard from './component/CourseCard';
+// import NavBar from './component/NavBar';
+// import CourseCardArea from './component/CourseCardArea';
+// import Main from './Main';
 
-function App() {
+const App = () => {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BackPackProvider>
+      <div className="App">
+          <Routes>
+            <Route path='/' Component={homepage}></Route>
+            <Route path='/listView' Component={listView}></Route>
+            <Route path='/mapView' Component={mapView}></Route>
+            <Route path='/calendarView' Component={calendarView}></Route>
+          </Routes>
+        {/* <Main /> */}
+      </div>
+    </BackPackProvider>
   );
 }
 
