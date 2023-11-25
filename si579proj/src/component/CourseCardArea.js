@@ -8,6 +8,7 @@ import CourseCard from './CourseCard';
 import Container from 'react-bootstrap/Container';
 import { useEffect, useState } from 'react';
 import SearchBar from './SearchBar';
+import HomePageSearchBox from '../component/HomePageSearchBox';
 // import CardGroup from 'react-bootstrap/CardGroup';
 // import Row from 'react-bootstrap/Row';
 // import Col from 'react-bootstrap/Col';
@@ -29,9 +30,10 @@ const CourseCardArea = () => {
 
     return (
         <>
-        <Container>
+        {/* <Container>
             <SearchBar setParentRes = {setCourses} renderDropDowm = {false} ></SearchBar>
-        </Container>
+        </Container> */}
+        <HomePageSearchBox />
         <Container><div className = "row justify-content-center">
 
             {/* force to render if no search results */}

@@ -13,20 +13,20 @@ const CourseCard = (props) => {
     const displayCredits = props.credits > 4 ? 'TBA' : props.credits;
 
     return (
-        <Card style={{ width: '24rem', height: '12rem'}} className=' mx-1 my-1 border'>
+        <div style={{ width: '20rem', height: '11rem', backgroundColor:'white', borderRadius:'5%', padding:'10px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between'}} className=' mx-1 my-1 border'>
           {/* we might not need the picture */}
           {/* <Card.Img variant="top" src="https://yt3.googleusercontent.com/ytc/APkrFKY7Ofoz3DRteo2LvDggtO1FAUcsEa-sGL64SM9aDQ=s900-c-k-c0x00ffffff-no-rj" /> */}
-          <Card.Body style={{display: 'flex', flexDirection: 'column', justifyContent: 'space-between'}}>
+          {/* <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'space-between'}}> */}
             <div>
-              <Card.Title className="text-start">{props.code}</Card.Title>
-              <Card.Text className="text-start">
+              <div style={{fontSize: 18, backgroundColor:'#f8f9fa',height:'45px', paddingTop:'10px', color:'#0d47a1', fontWeight:'bold'}} className="justify-content-center">{props.code}</div>
+              <div style={{fontSize: 15}}>
                 {props.title}
                 <br />
-                Units: {displayCredits}
-              </Card.Text>
+                <strong>Units: </strong>{displayCredits}
+              </div>
             </div>
-            <div style={{marginTop: '12px'}}>
-              <Button variant="primary" onClick={handleShow}>See Course Description</Button>
+            <div >
+              <Button style={{backgroundColor:'#1e88e5', width:'300px', height:'30px', display:'flex', flexDirection:'column', justifyContent:'center', paddingLeft:'60px'}} variant="primary" onClick={handleShow}><div style={{fontWeight:'bold'}}>See Course Description</div></Button>
             </div>
             <Offcanvas show={show} onHide={handleClose}>
                 <Offcanvas.Header closeButton>
@@ -36,8 +36,8 @@ const CourseCard = (props) => {
                     {props.description}
                 </Offcanvas.Body>
             </Offcanvas>
-          </Card.Body>
-        </Card>
+          {/* </div> */}
+        </div>
       );
 };
 

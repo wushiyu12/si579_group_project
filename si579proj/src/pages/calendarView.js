@@ -50,9 +50,12 @@ export default class calendarView extends React.PureComponent {
       
 
       return (
-        <>
-
-            <h2>This is the calendar view</h2>
+        <div style={{backgroundColor:'#f8f9fa'}}>
+          <div className="text-center  py-3" style={{height:'100px',backgroundColor: '#1565c0'}}>
+            <h2 style={{fontSize:30, fontWeight:'bold', paddingTop:'2%', color:'white'}}>This is the calendar view</h2>
+          </div>
+{/* 
+            <h2>This is the calendar view</h2> */}
             <NavBar />
             <Container>
               {/* <SearchBar setParentRes = {setCourses} renderDropDowm = {false} ></SearchBar> */}
@@ -91,7 +94,7 @@ export default class calendarView extends React.PureComponent {
                 />
               </Scheduler>
             </Paper>
-        </>
+        </div>
       );
     }
 }
