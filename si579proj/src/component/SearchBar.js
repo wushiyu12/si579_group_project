@@ -2,6 +2,8 @@ import React from 'react';
 import {Form, Row, Col, InputGroup, Dropdown,ListGroup,Container} from 'react-bootstrap';
 import { useState, useEffect} from 'react';
 import {courseList} from '../util/course';
+import { searchCode } from '../util/searchCode';
+import { searchDes } from '../util/searchDes';
 
 // this component take a obj course list as arg
 // use props.setChooseRes to pass its choosen res to 
@@ -18,11 +20,32 @@ const SearchBar = (props) => {
     }
 
     const checkInput = (e) => {
+        // setInputValue(e.target.value);
+        // const filtered = courseList
+        //   .filter((course) => (course.code + course['Course Title']).toLowerCase().includes(e.target.value.toLowerCase()))
+        // setResults(filtered)
+
+        // notice use e.target.value here
+        // the value change will happen in the next render cycle we need to
+        // use useEffect
+        // setInputValue(e.target.value);
+        // if (searchMod === 'searchCode'){
+        //     setResults(searchCode(courseList, e.target.value));
+        // }
+        // else{
+        //     setResults([])
+        // }
         setInputValue(e.target.value);
-        const filtered = courseList
-          .filter((course) => (course.code + course['Course Title']).toLowerCase().includes(e.target.value.toLowerCase()))
-        setResults(filtered)
     }
+
+    // Reacts to changes in inputValue and searchMod
+    useEffect(() => {
+        if (searchMod === 'searchCode') {
+            setResults(searchCode(courseList, inputValue));
+        } else {
+            setResults(searchDes(courseList, inputValue));
+        }
+    }, [inputValue, searchMod]); 
 
     const chooseResult = (choice) => {
         setInputValue(choice.code);
@@ -80,9 +103,8 @@ const SearchBar = (props) => {
 
         <Dropdown.Menu>
         {/* {searchMod} will be changed later  */}
-                <Dropdown.Item eventKey="searchCode">Seacrch by Code</Dropdown.Item>
+                <Dropdown.Item eventKey="searchCode">Seacrch by Name</Dropdown.Item>
                 <Dropdown.Item eventKey="searchDes">Seacrch by Description</Dropdown.Item>
-                {console.log(searchMod)}
             </Dropdown.Menu>
         </Dropdown>
         </Col>
