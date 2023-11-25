@@ -9,7 +9,6 @@ const listView = () => {
         <h2>This is the list view</h2>
       </div>
         <NavBar />
-        {/* <CourseCard code={courseList[0]['code']} title={courseList[0]['Course Title']}/> */}
         <CourseCardArea />
       </>
     );

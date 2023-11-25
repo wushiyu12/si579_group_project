@@ -1,42 +1,10 @@
 import React from 'react';
-import {Card, Row, Form, InputGroup } from 'react-bootstrap';
+import {Card, Row} from 'react-bootstrap';
 import { useState } from 'react';
-// import { useState, useEffect, Context } from 'react';
-// import {courseList} from '../util/course';
-// import ListGroup from 'react-bootstrap/ListGroup';
 import SearchBar from './SearchBar';
 import CourseProfile from './CourseProfile';
 
 const SearchCard = () => {
-
-    // const [results, setResults] = useState([])
-    // const [inputValue, setInputValue] = useState('');
-
-    // const checkInput = (e) => {
-    //     setInputValue(e.target.value);
-    //     const filtered = courseList
-    //       .filter((course) => course.code.toLowerCase().includes(e.target.value.toLowerCase()))
-    //     setResults(filtered)
-    // }
-
-    // const chooseResult = (choice) => {
-    //     setInputValue(choice);
-    //     setResults([]);
-    // }
-
-    // const clearResult = () => {
-    //     setResults([]);
-    // }
-
-    // useEffect(() => {
-    //     // Add event listener for the whole page
-    //     window.addEventListener('click', clearResult);
-    
-    //     // Cleanup the event listener when the component unmounts
-    //     return () => {
-    //       window.removeEventListener('click', clearResult);
-    //     };
-    //   }, []); 
 
     const [chooseRes, setChooseRes] = useState(null);
 
@@ -54,25 +22,7 @@ const SearchCard = () => {
             </Card.Text>
 
 
-            {/* <InputGroup className="search-bar-container">
-                <Form.Control
-                type="search"
-                value = {inputValue}
-                onChange={checkInput}
-                placeholder="Search for Course"
-                />
-            </InputGroup> 
-            <ListGroup >
-                {results.length >0 && 
-                 results.slice(0, 5).map((course, index) => 
-                    <ListGroup.Item action key = {index}
-                                    onClick={() => chooseResult(course.code)}>
-                        {`${course.code} ${course['Course Title']}`}
-                    </ListGroup.Item>
-                    )}
-            </ListGroup> */}
-
-        <SearchBar setChooseRes = {setChooseRes}></SearchBar>
+        <SearchBar setChooseRes = {setChooseRes} renderDropDowm = {true}></SearchBar>
         {chooseRes && <CourseProfile chooseRes = {chooseRes}></CourseProfile>}
         </Card.Body>
         </Card>
