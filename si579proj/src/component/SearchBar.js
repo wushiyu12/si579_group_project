@@ -41,9 +41,17 @@ const SearchBar = (props) => {
     // Reacts to changes in inputValue and searchMod
     useEffect(() => {
         if (searchMod === 'searchCode') {
-            setResults(searchCode(courseList, inputValue));
+            const temp = searchCode(courseList, inputValue);
+            setResults(temp);
+            if (props.setParentRes){
+                props.setParentRes(temp);
+            }
         } else {
-            setResults(searchDes(courseList, inputValue));
+            const temp = searchDes(courseList, inputValue);
+            setResults(temp);
+            if (props.setParentRes){
+                props.setParentRes(temp)
+            }
         }
     }, [inputValue, searchMod]); 
 
@@ -51,7 +59,9 @@ const SearchBar = (props) => {
         setInputValue(choice.code);
         // the setChooseRes naming need to persist to use
         // the search bar will replace the other ones in nav bar
-        props.setChooseRes(choice)
+        if(props.setChooseRes){
+            props.setChooseRes(choice)
+        }
         setResults([]);
     }
 
@@ -73,7 +83,6 @@ const SearchBar = (props) => {
     return(
         <Container>
         <Row>
-
         <Col sm={8}>
         <InputGroup className="search-bar-container">
             <Form.Control
@@ -84,6 +93,7 @@ const SearchBar = (props) => {
             />
         </InputGroup> 
 
+        {props.renderDropDowm &&
         <ListGroup >
             {results.length >0 && 
              results.slice(0, 5).map((course, index) => 
@@ -93,8 +103,10 @@ const SearchBar = (props) => {
                 </ListGroup.Item>
             )}
         </ListGroup>
+        }
         </Col>
-
+        
+        
         <Col sm={'auto'}>
         <Dropdown onSelect={handleSelect}>
             <Dropdown.Toggle variant="outline-primary" id="dropdown-basic">
@@ -108,7 +120,7 @@ const SearchBar = (props) => {
             </Dropdown.Menu>
         </Dropdown>
         </Col>
-
+        
         </Row>
         </Container>
         

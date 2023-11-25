@@ -6,7 +6,8 @@ import {courseList} from '../util/course';
 
 import CourseCard from './CourseCard';
 import Container from 'react-bootstrap/Container';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import SearchBar from './SearchBar';
 // import CardGroup from 'react-bootstrap/CardGroup';
 // import Row from 'react-bootstrap/Row';
 // import Col from 'react-bootstrap/Col';
@@ -23,8 +24,28 @@ import { useState } from 'react';
 
 const CourseCardArea = () => {
     const [courses, setCourses] = useState(courseList);
+    const courseListCP = courseList;
+
+
     return (
+        <>
+        <Container>
+            <SearchBar setParentRes = {setCourses} renderDropDowm = {false} ></SearchBar>
+        </Container>
         <Container><div className = "row justify-content-center">
+
+            {/* force to render if no search results */}
+            {courses.length === 0 && courseListCP.map((course, index) => 
+                    <div className = "col-auto mb3" key = {course['code']} >
+                        <CourseCard  
+                            code = {course['code']} 
+                            title = {course['Course Title']} 
+                            description = {course['Course Description']} 
+                            credits = {course['Credits']}
+                        />
+                    </div>
+                )}
+
             {courses.map((course, index) => 
                 <div className = "col-auto mb3" key = {course['code']} >
                     <CourseCard  
@@ -36,6 +57,7 @@ const CourseCardArea = () => {
                 </div>
             )}
         </div></Container>
+        </>
     )
 };
 export default CourseCardArea

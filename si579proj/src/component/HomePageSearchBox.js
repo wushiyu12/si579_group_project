@@ -72,7 +72,7 @@ const SearchCard = () => {
                     )}
             </ListGroup> */}
 
-        <SearchBar setChooseRes = {setChooseRes}></SearchBar>
+        <SearchBar setChooseRes = {setChooseRes} renderDropDowm = {true}></SearchBar>
         {chooseRes && <CourseProfile chooseRes = {chooseRes}></CourseProfile>}
         </Card.Body>
         </Card>
