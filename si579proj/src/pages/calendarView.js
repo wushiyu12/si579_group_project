@@ -17,6 +17,13 @@ import {
 import { appointments } from '../component/appointments';
 
 import NavBar from '../component/NavBar';
+import {Form, Row, Col, InputGroup, Dropdown,ListGroup,Container} from 'react-bootstrap';
+import { useState, useEffect} from 'react';
+import {courseList} from '../util/course';
+import { searchCode } from '../util/searchCode';
+import { searchDes } from '../util/searchDes';
+import SearchBar from '../component/SearchBar';
+import { useBackPack } from '../component/BackPackContext';
 
 export default class calendarView extends React.PureComponent {
     constructor(props) {
@@ -30,15 +37,26 @@ export default class calendarView extends React.PureComponent {
       this.currentViewNameChange = (currentViewName) => {
         this.setState({ currentViewName });
       };
+
+      // need to find somewhere to place it
+      // const { backpack, addToBackpack, removeFromBackpack } = useBackPack();
     }
+
   
     render() {
       const { data, currentViewName } = this.state;
+      
+      // get the backpack and its seter func
+      
 
       return (
         <>
+
             <h2>This is the calendar view</h2>
             <NavBar />
+            <Container>
+              {/* <SearchBar setParentRes = {setCourses} renderDropDowm = {false} ></SearchBar> */}
+            </Container>
             <Paper>
               <Scheduler
                 data={data}
