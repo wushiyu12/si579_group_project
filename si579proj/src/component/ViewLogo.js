@@ -17,12 +17,14 @@ const ViewLogo = ({ pageName, description, address, buttonText }) => {
     navigate(`/${address}`);
   };
     return (
-      <Card style={{ width: '67rem' }} className='shadow-lg mx-auto p-3 my-3'>
-        <Card.Body>
-          <Card.Title className="fs-3 page-title" >{pageName}</Card.Title>
-          <Card.Text>
-          {description}
-          </Card.Text>
+      <Card style={{ width: '90%', height: '90%'}} className='shadow-lg mx-auto p-3 my-3'>
+        <Card.Body style={{display:'flex',flexDirection:'column',justifyContent:'space-between'}}>
+          <div>
+            <Card.Title className="fs-3 page-title" >{pageName}</Card.Title>
+            <Card.Text>
+            {description}
+            </Card.Text>
+          </div>
           <Button variant="outline-primary" onClick={handleNavigation}>{buttonText}</Button>
         </Card.Body>
       </Card>
