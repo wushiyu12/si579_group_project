@@ -30,9 +30,6 @@ const searchDes = (documents, query) => {
             for (const term in queryFrequencies) {
               score += (docFrequencies[term] || 0);
             }
-            console.log(doc);
-            console.log(score);
-            console.log();
             return { doc, score };
         }).filter((doc) => doc.score > 0)
         .sort((a, b) => b.score - a.score)
