@@ -34,7 +34,8 @@ const searchDes = (documents, query) => {
             console.log(score);
             console.log();
             return { doc, score };
-        }).sort((a, b) => b.score - a.score)
+        }).filter((doc) => doc.score > 0)
+        .sort((a, b) => b.score - a.score)
           .map(item => item.doc)); // Return only the document, not the score
     }
     

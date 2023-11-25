@@ -20,25 +20,13 @@ const SearchBar = (props) => {
     }
 
     const checkInput = (e) => {
-        // setInputValue(e.target.value);
-        // const filtered = courseList
-        //   .filter((course) => (course.code + course['Course Title']).toLowerCase().includes(e.target.value.toLowerCase()))
-        // setResults(filtered)
-
-        // notice use e.target.value here
-        // the value change will happen in the next render cycle we need to
-        // use useEffect
-        // setInputValue(e.target.value);
-        // if (searchMod === 'searchCode'){
-        //     setResults(searchCode(courseList, e.target.value));
-        // }
-        // else{
-        //     setResults([])
-        // }
         setInputValue(e.target.value);
     }
 
     // Reacts to changes in inputValue and searchMod
+
+    // using props.setParentRes to save all match obj in an Array
+
     useEffect(() => {
         if (searchMod === 'searchCode') {
             const temp = searchCode(courseList, inputValue);
@@ -55,6 +43,9 @@ const SearchBar = (props) => {
         }
     }, [inputValue, searchMod]); 
 
+
+    // using props.setChooseRes to save the user clicked element
+    
     const chooseResult = (choice) => {
         setInputValue(choice.code);
         // the setChooseRes naming need to persist to use

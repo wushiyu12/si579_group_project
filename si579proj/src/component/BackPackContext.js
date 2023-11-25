@@ -1,4 +1,5 @@
 import React, { createContext, useState, useContext,useEffect} from 'react';
+import context from 'react-bootstrap/esm/AccordionContext';
 
 // Create a Context object for the backpack data
 const BackPackContext = createContext();
@@ -58,3 +59,8 @@ const BackPackProvider = ({ children }) => {
 // Create a custom hook to simplify the usage of the backpack context in other components
 export {BackPackProvider};
 export const useBackPack = () => useContext(BackPackContext);
+
+// how to use the context
+// just using useBackPack
+// for example 
+// const { backpack, addToBackpack, removeFromBackpack } = useBackPack();
