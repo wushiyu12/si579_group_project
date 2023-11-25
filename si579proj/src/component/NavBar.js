@@ -9,11 +9,6 @@
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
-import Form from 'react-bootstrap/Form';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Button from 'react-bootstrap/Button';
 import { Link } from "react-router-dom";
 
 const NavBar = (props) => {
@@ -39,14 +34,7 @@ const NavBar = (props) => {
                 
               </Nav>
             </Navbar.Collapse>
-
-      {/* the form need to be edited */}
-      {/* a new search bar will be need here */}
-      {/* the search bar need to be different in list view
-      and calender view */}
-      {/* think about using children render to do */}
-
-
+            
           </Container>
         </Navbar>
       );

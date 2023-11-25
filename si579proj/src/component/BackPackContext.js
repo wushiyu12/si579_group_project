@@ -1,5 +1,4 @@
 import React, { createContext, useState, useContext,useEffect} from 'react';
-import context from 'react-bootstrap/esm/AccordionContext';
 
 // Create a Context object for the backpack data
 const BackPackContext = createContext();
