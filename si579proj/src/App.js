@@ -3,7 +3,7 @@ import './App.css';
 import homepage from './pages/homepage';
 import listView from './pages/listView';
 import mapView from './pages/mapView';
-import calendarView from './pages/calendarView';
+import calendarView from './pages/CalendarView';
 import { Routes, Route } from 'react-router-dom';
 import { BackPackProvider } from './component/BackPackContext';
 // import { createContext } from 'react';
