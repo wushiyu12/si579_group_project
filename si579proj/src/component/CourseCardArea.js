@@ -24,7 +24,13 @@ import HomePageSearchBox from '../component/HomePageSearchBox';
 // };
 
 const CourseCardArea = () => {
-    const [courses, setCourses] = useState(courseList);
+    const [courses, setCourses] = useState(() => {
+        const saved = localStorage.getItem("my-todo-items");
+        if (saved) {
+            return JSON.parse(saved);
+        }
+        return [];
+    });
     const courseListCP = courseList;
 
 

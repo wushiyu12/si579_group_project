@@ -23,8 +23,8 @@ const Calendar = () => {
   const [currentViewName, setCurrentViewName] = useState('Week');
 
   return (
-    <>
-      <Paper>
+    <div style={{display:'flex',flexDirection:'row',justifyContent:'center',paddingBottom:'10px'}}>
+      <Paper style={{width: '90%'}}>
         <Scheduler
           data={data}
           // height={660}
@@ -51,7 +51,7 @@ const Calendar = () => {
           />
         </Scheduler>
       </Paper>
-    </>
+    </div>
   )
 };
 export default Calendar;
