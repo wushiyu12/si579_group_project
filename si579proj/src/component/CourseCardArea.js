@@ -82,7 +82,7 @@ const CourseCardArea = () => {
                         />
                     </div>
                 )} */}
-
+            {courses.length === 0 && <div>No Result!</div>}
             {courses.slice(24*page,24*(page+1)).map((course, index) => 
                 <div className = "col-auto mb3" key = {index} >
                     <CourseCard  
