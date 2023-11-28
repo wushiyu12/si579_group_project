@@ -39,10 +39,10 @@ const Calendar = () => {
             endDayHour={21.5}
           />
           {/* <MonthView /> */}
-          {/* <DayView />
-          <Toolbar />
-          <ViewSwitcher />
-          {currentViewName === 'Day' && <DateNavigator />} */}
+          {/* <DayView /> */}
+          {/* <Toolbar /> */}
+          {/* <ViewSwitcher /> */}
+          {/* {currentViewName === 'Day' && <DateNavigator />} */}
           {/* <TodayButton /> */}
           <Appointments />
           <AppointmentTooltip
