@@ -9,10 +9,10 @@ const CourseProfile = (props) => {
   // const value = { backpack, addToBackpack, removeFromBackpack };
 
   const { backpack, addToBackpack, removeFromBackpack } = useBackPack();
-  const [isAdd,setIsAdd] = useState(false);
-  useEffect(() => {
-    setIsAdd(false);
-  }, [props.chooseRes]);
+
+  const checkInBackpack = backpack.some(obj => {
+    return obj['code'] == props.chooseRes['code'];
+  });
 
   const displayCredits = props.chooseRes.Credits > 4 ? 'TBA' : props.chooseRes.Credits;
   
@@ -26,13 +26,15 @@ const CourseProfile = (props) => {
       <Card.Title className="fs-5 text-start">{`Credits : ${displayCredits}`}</Card.Title>
       {/* align the button to left */}
       <div className="text-start">
-          <Button variant="primary" disabled = {isAdd}
+          <Button variant="primary" className={`bg-${checkInBackpack?'danger':'safe'}`}
             onClick={() => {
-              addToBackpack(props.chooseRes);
-              setIsAdd(true);
-              console.log(backpack);
+              if (!checkInBackpack){
+                addToBackpack(props.chooseRes);
+              } else{
+                removeFromBackpack(props.chooseRes);
+              }
             }}> 
-            {!isAdd ? "Add to Backpack" : "Course Added"}
+            {checkInBackpack?'Remove from Backpack':'Add to Backpack'}
           </Button>
       </div>
     </Card>

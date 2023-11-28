@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Paper from '@mui/material/Paper';
 import { ViewState } from '@devexpress/dx-react-scheduler';
 import {
@@ -14,7 +14,7 @@ import {
   Appointments,
   // TodayButton,
 } from '@devexpress/dx-react-scheduler-material-ui';
-import {courseList} from '../util/course'
+import { useBackPack } from './BackPackContext';
 
 const Calendar = () => {
   const getTime = (weekday, timestamp) => {
@@ -44,8 +44,13 @@ const Calendar = () => {
       endDate: new Date(getTime(course['Date'], course['End']))
     }))
   }
-  const [data, setData] = useState(localStorage.getItem('backpack')?courseMapping(JSON.parse(localStorage.getItem('backpack'))):[]);
+  const { backpack, addToBackpack, removeFromBackpack } = useBackPack();
+  const [data, setData] = useState(courseMapping(backpack));
   const [currentViewName, setCurrentViewName] = useState('Week');
+
+  useEffect(() => {
+    setData(courseMapping(backpack));
+  }, [backpack])
 
   return (
     <div style={{display:'flex',flexDirection:'row',justifyContent:'center',paddingBottom:'10px'}}>
