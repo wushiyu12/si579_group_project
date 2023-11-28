@@ -38,22 +38,22 @@ const CourseCardArea = () => {
 
     const [page, setPage] = useState(0) 
 
-    useEffect(() =>{
+    // useEffect(() =>{
 
-        // defer the effect of setting the course
-        // Which will defer the rerender of all cards 
-        // when no result is founc
-        const timeOutId = setTimeout(() => {
-            // combine the effect of it inside
-            if (courses.length === 0) {
-                setCourses(courseList);
-            }
-        }, 1000);
+    //     // defer the effect of setting the course
+    //     // Which will defer the rerender of all cards 
+    //     // when no result is founc
+    //     const timeOutId = setTimeout(() => {
+    //         // combine the effect of it inside
+    //         if (courses.length === 0) {
+    //             setCourses(courseList);
+    //         }
+    //     }, 1000);
 
-        // clean the time out
-        // using the return in use effect
-        return () => clearTimeout(timeOutId);
-    }, [courses])
+    //     // clean the time out
+    //     // using the return in use effect
+    //     return () => clearTimeout(timeOutId);
+    // }, [courses])
 
     return (
         // we need to use the search bar instead of the HomePageSearchBox
@@ -86,8 +86,8 @@ const CourseCardArea = () => {
             {courses.slice(24*page,24*(page+1)).map((course, index) => 
                 <div className = "col-auto mb3" key = {index} >
                     <CourseCard  
-                        code = {course['code']} 
-                        title = {course['Course Title']} 
+                        code = {`${course['code']} Sec ${course['Sec']}`}
+                        title = {course['Course Title']}
                         description = {course['Course Description']} 
                         credits = {course['Credits']}
                     />
@@ -98,7 +98,7 @@ const CourseCardArea = () => {
             <div className="col text-center">
                 <Pagination style = {{"justifyContent": "center"}}>
                     {/* dynamicly change the page number based on searched coursse */}
-                    {[...Array(Math.ceil(courses.length/24) > 0 ? Math.ceil(courses.length/24) :6)]
+                    {[...Array(Math.ceil(courses.length/24) > 0 ? Math.ceil(courses.length/24) :1)]
                     .map((_, index) => (
                         <Pagination.Item key={index + 1} active={index === page} 
                                          onClick = {(e) => {setPage(Number(e.target.innerText)-1)}}>

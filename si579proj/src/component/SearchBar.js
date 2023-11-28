@@ -41,6 +41,10 @@ const SearchBar = (props) => {
                 props.setParentRes(temp)
             }
         }
+        if (inputValue.length === 0 && props.setParentRes) {
+            setResults(courseList);
+            props.setParentRes(courseList);
+        }
     }, [inputValue, searchMod]); 
 
 
