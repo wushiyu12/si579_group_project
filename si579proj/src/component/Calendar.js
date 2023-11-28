@@ -14,12 +14,37 @@ import {
   Appointments,
   // TodayButton,
 } from '@devexpress/dx-react-scheduler-material-ui';
-
-import { appointments } from './appointments';
-
+import {courseList} from '../util/course'
 
 const Calendar = () => {
-  const [data, setData] = useState(appointments);
+  const getTime = (weekday, timestamp) => {
+    const date = new Date(timestamp);
+    const day = JSON.parse(weekday.replace(/'/g, '"'))[0];
+    let offset = 0;
+    if (day === "M"){
+      offset = -5;
+    } else if (day === "T"){
+      offset = -4;
+    } else if (day === "W"){
+      offset = -3;
+    } else if (day === "Th"){
+      offset = -2;
+    } else if (day === "F"){
+      offset = -1;
+    } else{
+      offset = 1;
+    }
+    return date.setDate(date.getDate() + offset);
+  }
+
+  const courseMapping = (courses) => {
+    return courses.map((course, index) => ({
+      title: `${course['code']} Sec ${course['Sec']}`,
+      startDate: new Date(getTime(course['Date'], course['Start'])),
+      endDate: new Date(getTime(course['Date'], course['End']))
+    }))
+  }
+  const [data, setData] = useState(localStorage.getItem('backpack')?courseMapping(JSON.parse(localStorage.getItem('backpack'))):[]);
   const [currentViewName, setCurrentViewName] = useState('Week');
 
   return (
@@ -30,7 +55,7 @@ const Calendar = () => {
           // height={660}
         >
           <ViewState
-            defaultCurrentDate="2018-07-27"
+            defaultCurrentDate="2023-11-23"
             currentViewName={currentViewName}
             onCurrentViewNameChange={setCurrentViewName}
           />
