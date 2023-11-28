@@ -4,13 +4,13 @@ import Paper from '@mui/material/Paper';
 import { ViewState } from '@devexpress/dx-react-scheduler';
 import {
   Scheduler,
-  DayView,
+  // DayView,
   WeekView,
   // MonthView,
-  Toolbar,
-  DateNavigator,
+  // Toolbar,
+  // DateNavigator,
   AppointmentTooltip,
-  ViewSwitcher,
+  // ViewSwitcher,
   Appointments,
   // TodayButton,
 } from '@devexpress/dx-react-scheduler-material-ui';
@@ -39,10 +39,10 @@ const Calendar = () => {
             endDayHour={21.5}
           />
           {/* <MonthView /> */}
-          <DayView />
+          {/* <DayView />
           <Toolbar />
           <ViewSwitcher />
-          {currentViewName === 'Day' && <DateNavigator />}
+          {currentViewName === 'Day' && <DateNavigator />} */}
           {/* <TodayButton /> */}
           <Appointments />
           <AppointmentTooltip
