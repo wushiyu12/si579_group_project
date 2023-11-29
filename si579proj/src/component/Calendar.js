@@ -34,7 +34,7 @@ const Calendar = () => {
     } else{
       offset = 1;
     }
-    return date.setDate(date.getDate() + offset);
+    return new Date(new Date(date.setDate(date.getDate() + offset)).toLocaleString('en-US', {timeZone: 'GMT'}));
   }
 
   const courseMapping = (courses) => {
