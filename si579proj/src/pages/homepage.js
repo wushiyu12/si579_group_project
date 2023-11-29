@@ -2,7 +2,6 @@ import React from 'react';
 import Logo from '../component/Logo';
 import ViewLogo from '../component/ViewLogo';
 import HomePageSearchBox from '../component/HomePageSearchBox';
-import NavBar from '../component/NavBar';
 // import PageCard from '../component/pageCard';
 // import NavBar from '../component/NavBar';
 
@@ -10,7 +9,7 @@ const homepage = () => {
   return (
     <div style={{backgroundColor:'#f8f9fa', height:'1000px'}}>
         <Logo/>
-      <NavBar />
+      {/* <NavBar /> */}
       {/* <div className="row mb-3"> */}
         <HomePageSearchBox />
       {/* </div> */}

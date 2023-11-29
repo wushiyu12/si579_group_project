@@ -29,10 +29,8 @@ const Calendar = () => {
       offset = -3;
     } else if (day === "Th"){
       offset = -2;
-    } else if (day === "F"){
-      offset = -1;
     } else{
-      offset = 1;
+      offset = -1;
     }
     return new Date(new Date(date.setDate(date.getDate() + offset)).toLocaleString('en-US', {timeZone: 'GMT'}));
   }

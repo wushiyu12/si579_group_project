@@ -1,10 +1,13 @@
 import Calendar from '../component/Calendar';
+import CalendarList from '../component/CalendarList';
 import NavBar from '../component/NavBar';
-import Container from 'react-bootstrap/Container';
 import { useEffect, useState } from 'react';
 import SearchBar from '../component/SearchBar';
 import CourseProfile from '../component/CourseProfile';
 import HomePageSearchBox from '../component/HomePageSearchBox';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 const CalendarView = () => {
     const [chooseRes, setChooseRes] = useState(null);
@@ -21,7 +24,16 @@ const CalendarView = () => {
             {chooseRes && <CourseProfile chooseRes = {chooseRes}></CourseProfile>}
             </Container> */}
             <HomePageSearchBox />
-            <Calendar />
+            <Container>
+                <Row>
+                    <Col xs={12} md={3} lg={3}>
+                        <CalendarList />
+                    </Col>
+                    <Col xs={12} md={9} lg={9}>
+                        <Calendar />
+                    </Col>
+                </Row>
+            </Container>
         </div>
     )
 }
