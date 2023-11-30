@@ -2,23 +2,18 @@ import React from 'react';
 import Logo from '../component/Logo';
 import ViewLogo from '../component/ViewLogo';
 import HomePageSearchBox from '../component/HomePageSearchBox';
-import NavBar from '../component/NavBar';
-// import PageCard from '../component/pageCard';
-// import NavBar from '../component/NavBar';
+
 
 const homepage = () => {
   return (
     <div style={{backgroundColor:'#f8f9fa', height:'1000px'}}>
         <Logo/>
-      <NavBar />
-      {/* <div className="row mb-3"> */}
+
         <HomePageSearchBox />
-      {/* </div> */}
 
       <div className="row g-4">
         <div className="col-md-4">
           <ViewLogo 
-            // pageName='Browse Courses' 
             pageName='List View' 
             description='Browse Courses in List view' 
             address='listView'
@@ -30,7 +25,6 @@ const homepage = () => {
 
         <div className="col-md-4">
           <ViewLogo 
-            // pageName='Plan Out Your Semester' 
             pageName='Calendar View' 
             description='Calendar view of your registered courses' 
             address='calendarView' 
@@ -53,10 +47,6 @@ const homepage = () => {
             buttonText='See Where to Go' />
         </div>
       </div>
-      {/* to be removed */}
-      {/* <PageCard pageName='List View' description='List view of courses.' address='listView' />
-      <PageCard pageName='Calendar View' description='Calendar view of courses.' address='calendarView' />
-      <PageCard pageName='Map View' description='Map view of courses.' address='mapView' /> */}
     </div>
   )
 }

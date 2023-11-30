@@ -24,7 +24,6 @@ const SearchBar = (props) => {
     }
 
     // Reacts to changes in inputValue and searchMod
-
     // using props.setParentRes to save all match obj in an Array
 
     useEffect(() => {
@@ -94,7 +93,7 @@ const SearchBar = (props) => {
              results.slice(0, 5).map((course, index) => 
                 <ListGroup.Item action key = {index}
                                 onClick={() => chooseResult(course)}>
-                    {`${course.code} ${course['Course Title']}`}
+                    {`${course.code} Sec ${course['Sec']} ${course['Course Title']}`}
                 </ListGroup.Item>
             )}
         </ListGroup>
@@ -109,7 +108,6 @@ const SearchBar = (props) => {
         </Dropdown.Toggle>
 
         <Dropdown.Menu>
-        {/* {searchMod} will be changed later  */}
                 <Dropdown.Item eventKey="searchCode">Seacrch by Name</Dropdown.Item>
                 <Dropdown.Item eventKey="searchDes">Seacrch by Description</Dropdown.Item>
             </Dropdown.Menu>

@@ -1,6 +1,5 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import { useState } from 'react';
 
@@ -14,9 +13,7 @@ const CourseCard = (props) => {
 
     return (
         <div style={{ width: '20rem', height: '11rem', backgroundColor:'white', borderRadius:'5%', padding:'10px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between'}} className=' mx-1 my-1 border'>
-          {/* we might not need the picture */}
-          {/* <Card.Img variant="top" src="https://yt3.googleusercontent.com/ytc/APkrFKY7Ofoz3DRteo2LvDggtO1FAUcsEa-sGL64SM9aDQ=s900-c-k-c0x00ffffff-no-rj" /> */}
-          {/* <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'space-between'}}> */}
+          
             <div>
               <div style={{fontSize: 18, backgroundColor:'#f8f9fa',height:'45px', paddingTop:'10px', color:'#0d47a1', fontWeight:'bold'}} className="justify-content-center">{props.code}</div>
               <div style={{fontSize: 15}}>
@@ -29,14 +26,31 @@ const CourseCard = (props) => {
               <Button style={{backgroundColor:'#1e88e5', width:'300px', height:'30px', display:'flex', flexDirection:'column', justifyContent:'center', paddingLeft:'60px'}} variant="primary" onClick={handleShow}><div style={{fontWeight:'bold'}}>See Course Description</div></Button>
             </div>
             <Offcanvas show={show} onHide={handleClose}>
+
                 <Offcanvas.Header closeButton>
-                    <Offcanvas.Title>{props.title}</Offcanvas.Title>
+                  <Offcanvas.Title>{props.title}</Offcanvas.Title>
                 </Offcanvas.Header>
+
+              <Offcanvas.Header className='py-0'>
+                <Offcanvas.Title>{` Instructor :${props.instr}`}</Offcanvas.Title>
+              </Offcanvas.Header>
+
+              <Offcanvas.Header className='py-0'>
+                <Offcanvas.Title > Prerequisite :{props.preReq === null ? "None" : props.preReq}</Offcanvas.Title>
+              </Offcanvas.Header>
+
+              <Offcanvas.Header className='py-0'>
+                <Offcanvas.Title> Location: {props.room}</Offcanvas.Title>
+              </Offcanvas.Header>
+
+              <Offcanvas.Header className='py-0'>
+                <Offcanvas.Title> Time: {props.day}{props.start}{props.end}</Offcanvas.Title>
+              </Offcanvas.Header>
+
                 <Offcanvas.Body>
                     {props.description}
                 </Offcanvas.Body>
             </Offcanvas>
-          {/* </div> */}
         </div>
       );
 };

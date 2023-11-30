@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import {Card, Button} from 'react-bootstrap';
 import { useBackPack } from './BackPackContext';
+import { getTime } from '../util/getTime';
 
 const CourseProfile = (props) => {
 
@@ -15,6 +16,7 @@ const CourseProfile = (props) => {
   });
 
   const displayCredits = props.chooseRes.Credits > 4 ? 'TBA' : props.chooseRes.Credits;
+  const displayDateArray = JSON.parse(props.chooseRes.Date.replace(/'/g, '"'))
   
   return (
     <Card  className='shadow mx-auto p-3 my-3'>
@@ -24,7 +26,13 @@ const CourseProfile = (props) => {
       <Card.Text className= "text-start" >{props.chooseRes["Course Description"]}</Card.Text>
       <Card.Title className="fs-5 text-start">{`Current Enforced Prerequisites : ${props.chooseRes["Current Enforced Prerequisites"]}`}</Card.Title>
       <Card.Title className="fs-5 text-start">{`Credits : ${displayCredits}`}</Card.Title>
+      <Card.Title className="fs-5 text-start">
+        Time:
+        {displayDateArray.map((item, index) => <span key={index}>{`${item} `}</span>)}
+        From:{getTime(props.chooseRes.Start)} To:{getTime(props.chooseRes.End)}
+      </Card.Title>
       {/* align the button to left */}
+
       <div className="text-start">
           <Button variant="primary" className={`bg-${checkInBackpack?'danger':'safe'}`}
             onClick={() => {

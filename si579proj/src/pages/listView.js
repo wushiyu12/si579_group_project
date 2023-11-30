@@ -9,9 +9,7 @@ const listView = () => {
         <h2 style={{fontSize:30, fontWeight:'bold', paddingTop:'2%', color:'white'}}>This is the list view</h2>
       </div>
       <NavBar />
-      {/* <div className="container my-5"> */}
         <CourseCardArea />
-      {/* </div> */}
       </div>
     );
   }

@@ -1,4 +1,3 @@
-import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
 import { useNavigate } from 'react-router-dom';
 
@@ -17,7 +16,6 @@ const ViewLogo = ({ pageName, description, address, buttonText, iconContent}) =>
     navigate(`/${address}`);
   };
     return (
-      // <div style={{ }} className=' mx-auto p-3 my-3'>
         <div style={{width:'350px' , height: '400px', borderRadius:'5%', backgroundColor:'white', display:'flex',flexDirection:'column',justifyContent:'space-between'}} className=' mx-auto p-3 my-3'>
             <div>
             <div style={{fontWeight:'bold', color:'#0d47a1',fontSize: 25, padding:'15px'}} >{pageName}</div>
@@ -26,13 +24,11 @@ const ViewLogo = ({ pageName, description, address, buttonText, iconContent}) =>
             {description}
             </div>
             </div>
-            {/* <i class="bi bi-book"></i> */}
             <div style={{display:'flex', flexDirection:'row', justifyContent:'center'}}>
             {iconContent}
             </div>
           <Button variant="outline-primary" onClick={handleNavigation}>{buttonText}</Button>
         </div>
-      // </div>
   
     );
   }
