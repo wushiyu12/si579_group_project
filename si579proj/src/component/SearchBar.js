@@ -24,7 +24,6 @@ const SearchBar = (props) => {
     }
 
     // Reacts to changes in inputValue and searchMod
-
     // using props.setParentRes to save all match obj in an Array
 
     useEffect(() => {

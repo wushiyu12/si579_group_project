@@ -1,7 +1,6 @@
 import Accordion from 'react-bootstrap/Accordion';
 import { useBackPack } from './BackPackContext';
 import { Button } from 'react-bootstrap';
-// import { useState, useEffect } from 'react';
 
 const CalendarList = () => {
     const { backpack, addToBackpack, removeFromBackpack } = useBackPack();

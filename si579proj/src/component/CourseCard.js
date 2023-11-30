@@ -1,6 +1,5 @@
 import React from 'react';
 import Button from 'react-bootstrap/Button';
-import Card from 'react-bootstrap/Card';
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import { useState } from 'react';
 
@@ -14,9 +13,7 @@ const CourseCard = (props) => {
 
     return (
         <div style={{ width: '20rem', height: '11rem', backgroundColor:'white', borderRadius:'5%', padding:'10px', display: 'flex', flexDirection: 'column', justifyContent: 'space-between'}} className=' mx-1 my-1 border'>
-          {/* we might not need the picture */}
-          {/* <Card.Img variant="top" src="https://yt3.googleusercontent.com/ytc/APkrFKY7Ofoz3DRteo2LvDggtO1FAUcsEa-sGL64SM9aDQ=s900-c-k-c0x00ffffff-no-rj" /> */}
-          {/* <div style={{display: 'flex', flexDirection: 'column', justifyContent: 'space-between'}}> */}
+          
             <div>
               <div style={{fontSize: 18, backgroundColor:'#f8f9fa',height:'45px', paddingTop:'10px', color:'#0d47a1', fontWeight:'bold'}} className="justify-content-center">{props.code}</div>
               <div style={{fontSize: 15}}>
@@ -36,7 +33,6 @@ const CourseCard = (props) => {
                     {props.description}
                 </Offcanvas.Body>
             </Offcanvas>
-          {/* </div> */}
         </div>
       );
 };
