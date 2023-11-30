@@ -17,9 +17,8 @@ import {
 import { useBackPack } from './BackPackContext';
 
 const Calendar = () => {
-  const getTime = (weekday, timestamp) => {
+  const getTime = (day, timestamp) => {
     const date = new Date(timestamp);
-    const day = JSON.parse(weekday.replace(/'/g, '"'))[0];
     let offset = 0;
     if (day === "M"){
       offset = -5;
@@ -36,11 +35,18 @@ const Calendar = () => {
   }
 
   const courseMapping = (courses) => {
-    return courses.map((course, index) => ({
-      title: `${course['code']} Sec ${course['Sec']}`,
-      startDate: new Date(getTime(course['Date'], course['Start'])),
-      endDate: new Date(getTime(course['Date'], course['End']))
-    }))
+    const weekdays = courses.map((course, index) => JSON.parse(course['Date'].replace(/'/g, '"')));
+    let res = [];
+    for (let i = 0; i < courses.length; i++){
+      for (let j = 0; j < weekdays[i].length; j++){
+        res.push(({
+          title: `${courses[i]['code']} Sec ${courses[i]['Sec']}`,
+          startDate: new Date(getTime(weekdays[i][j], courses[i]['Start'])),
+          endDate: new Date(getTime(weekdays[i][j], courses[i]['End']))
+        }))
+      }
+    }
+    return res;
   }
   const { backpack, addToBackpack, removeFromBackpack } = useBackPack();
   const [data, setData] = useState(courseMapping(backpack));

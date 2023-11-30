@@ -48,7 +48,7 @@ const CalendarList = () => {
                             <br />
                             <strong>Units: </strong>{obj['Credits'] > 4 ? 'TBA' : obj['Credits']}
                             <br />
-                            <strong>Have class on: </strong>{JSON.parse(obj['Date'].replace(/'/g, '"')).map((day) => `${Weekday[day]}`)}
+                            <strong>Have class on: </strong>{JSON.parse(obj['Date'].replace(/'/g, '"')).map((day) => `${Weekday[day]} `)}
                             <br />
                             <strong>Start time: </strong>{getTime(obj['Start'])}
                             <br />
