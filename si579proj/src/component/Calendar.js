@@ -4,15 +4,9 @@ import Paper from '@mui/material/Paper';
 import { ViewState } from '@devexpress/dx-react-scheduler';
 import {
   Scheduler,
-  // DayView,
   WeekView,
-  // MonthView,
-  // Toolbar,
-  // DateNavigator,
   AppointmentTooltip,
-  // ViewSwitcher,
   Appointments,
-  // TodayButton,
 } from '@devexpress/dx-react-scheduler-material-ui';
 import { useBackPack } from './BackPackContext';
 
@@ -61,7 +55,6 @@ const Calendar = () => {
       <Paper style={{width: '90%'}}>
         <Scheduler
           data={data}
-          // height={660}
         >
           <ViewState
             defaultCurrentDate="2023-11-23"
@@ -72,16 +65,9 @@ const Calendar = () => {
             startDayHour={7.5}
             endDayHour={21.5}
           />
-          {/* <MonthView /> */}
-          {/* <DayView /> */}
-          {/* <Toolbar /> */}
-          {/* <ViewSwitcher /> */}
-          {/* {currentViewName === 'Day' && <DateNavigator />} */}
-          {/* <TodayButton /> */}
           <Appointments />
           <AppointmentTooltip
             showCloseButton
-          //   showOpenButton
           />
         </Scheduler>
       </Paper>
