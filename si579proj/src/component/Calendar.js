@@ -42,7 +42,7 @@ const Calendar = () => {
     }
     return res;
   }
-  const { backpack, addToBackpack, removeFromBackpack } = useBackPack();
+  const {backpack, addToBackpack, removeFromBackpack } = useBackPack();
   const [data, setData] = useState(courseMapping(backpack));
   const [currentViewName, setCurrentViewName] = useState('Week');
 

@@ -1,16 +1,25 @@
-// this courseList will need to be changed in later work with the fetch data
 import {courseList} from '../util/course';
 import CourseCard from './CourseCard';
 import Container from 'react-bootstrap/Container';
 import { useState } from 'react';
 import SearchBar from './SearchBar';
 import Pagination from 'react-bootstrap/Pagination';
+import { getTime } from '../util/getTime';
 
 
 const CourseCardArea = () => {
 
     const [courses, setCourses] = useState(courseList);
     const [page, setPage] = useState(0) 
+
+    const getDay = (dayString) => {
+        dayString = dayString.replace(/'/g, '"');
+        // Parse the string to get the array
+        let array = JSON.parse(dayString);
+        // Join the array elements with a space
+        let result = array.join(" ");
+        return(result)
+    }
 
     return (
         <>
@@ -22,14 +31,22 @@ const CourseCardArea = () => {
 
         <Container><div className = "row justify-content-center">
 
-            {courses.length === 0 && <div>No Result!</div>}
-            {courses.slice(24*page,24*(page+1)).map((course, index) => 
+            {/* I have a strong desier to just pass in an obj
+            But life is short... */}
+            {courses.length === 0 && <div>No Result match your Input!</div>}
+            {courses.length !== 0 && courses.slice(24*page,24*(page+1)).map((course, index) => 
                 <div className = "col-auto mb3" key = {index} >
                     <CourseCard  
                         code = {`${course['code']} Sec ${course['Sec']}`}
                         title = {course['Course Title']}
                         description = {course['Course Description']} 
                         credits = {course['Credits']}
+                        preReq = {course['Current Enforced Prerequisites']}
+                        start = {getTime(course["Start"])}
+                        end = {getTime(course["Start"])}
+                        instr = {course["Instr"]}
+                        day = {getDay(course["Date"])}
+                        room = {course["Room"]}
                     />
                 </div>
             )}       
@@ -43,7 +60,6 @@ const CourseCardArea = () => {
                         <Pagination.Item key={index + 1} active={index === page} 
                                          onClick = {(e) => {setPage(Number(e.target.innerText)-1)}}>
                             {index + 1}
-                            {console.log(page)}
                         </Pagination.Item>
                     ))}
                 </Pagination>

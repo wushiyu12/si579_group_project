@@ -26,9 +26,27 @@ const CourseCard = (props) => {
               <Button style={{backgroundColor:'#1e88e5', width:'300px', height:'30px', display:'flex', flexDirection:'column', justifyContent:'center', paddingLeft:'60px'}} variant="primary" onClick={handleShow}><div style={{fontWeight:'bold'}}>See Course Description</div></Button>
             </div>
             <Offcanvas show={show} onHide={handleClose}>
+
                 <Offcanvas.Header closeButton>
-                    <Offcanvas.Title>{props.title}</Offcanvas.Title>
+                  <Offcanvas.Title>{props.title}</Offcanvas.Title>
                 </Offcanvas.Header>
+
+              <Offcanvas.Header className='py-0'>
+                <Offcanvas.Title>{` Instructor :${props.instr}`}</Offcanvas.Title>
+              </Offcanvas.Header>
+
+              <Offcanvas.Header className='py-0'>
+                <Offcanvas.Title > Prerequisite :{props.preReq === null ? "None" : props.preReq}</Offcanvas.Title>
+              </Offcanvas.Header>
+
+              <Offcanvas.Header className='py-0'>
+                <Offcanvas.Title> Location: {props.room}</Offcanvas.Title>
+              </Offcanvas.Header>
+
+              <Offcanvas.Header className='py-0'>
+                <Offcanvas.Title> Time: {props.day}{props.start}{props.end}</Offcanvas.Title>
+              </Offcanvas.Header>
+
                 <Offcanvas.Body>
                     {props.description}
                 </Offcanvas.Body>
