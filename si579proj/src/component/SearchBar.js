@@ -19,9 +19,15 @@ const SearchBar = (props) => {
         setSearchMod(eventKey);
     }
 
-    const checkInput = (e) => {
-        setInputValue(e.target.value);
+    const checkInput = (value) => {
+        setInputValue(value);
     }
+
+    // reset the parent display 
+    // after a single user input
+    const handelCloseReset  = () => {
+        props.setDispaly(true);
+      }
 
     // Reacts to changes in inputValue and searchMod
     // using props.setParentRes to save all match obj in an Array
@@ -82,7 +88,12 @@ const SearchBar = (props) => {
             <Form.Control
             type="search"
             value = {inputValue}
-            onChange={checkInput}
+
+            // reset the display after user input
+            onChange={(e) => {
+                checkInput(e.target.value);
+            }
+            }
             placeholder="Search for Course"
             />
         </InputGroup> 
@@ -92,7 +103,9 @@ const SearchBar = (props) => {
             {results.length >0 && 
              results.slice(0, 5).map((course, index) => 
                 <ListGroup.Item action key = {index}
-                                onClick={() => chooseResult(course)}>
+                                onClick={() => {chooseResult(course);
+                                                handelCloseReset();
+                                }}>
                     {`${course.code} Sec ${course['Sec']} ${course['Course Title']}`}
                 </ListGroup.Item>
             )}

@@ -1,7 +1,7 @@
 import React from 'react';
-import {Card, Button} from 'react-bootstrap';
-import { useBackPack } from './BackPackContext';
-import { getTime } from '../util/getTime';
+import {Card, Button,CloseButton} from 'react-bootstrap';
+import {useBackPack } from './BackPackContext';
+import {getTime} from '../util/getTime';
 
 const CourseProfile = (props) => {
 
@@ -15,12 +15,19 @@ const CourseProfile = (props) => {
     return obj['code'] == props.chooseRes['code'];
   });
 
+  const handelCloseClick  = () => {
+    props.setDispaly(false);
+  }
+
   const displayCredits = props.chooseRes.Credits > 4 ? 'TBA' : props.chooseRes.Credits;
   const displayDateArray = JSON.parse(props.chooseRes.Date.replace(/'/g, '"'))
   
   return (
     <Card  className='shadow mx-auto p-3 my-3'>
-      <Card.Header className="text-start " > Course Profile </Card.Header>
+      <Card.Header className="text-start " > 
+        Course Profile 
+        <CloseButton style= { {position: "absolute", top: "20px", right: "20px"}} onClick={handelCloseClick}/> 
+      </Card.Header>
       <Card.Title className="fs-5 text-start my-2">{props.chooseRes.code}</Card.Title>
       <Card.Title className="fs-4 course-profile" >{props.chooseRes["Course Title"]}</Card.Title>
       <Card.Text className= "text-start" >{props.chooseRes["Course Description"]}</Card.Text>

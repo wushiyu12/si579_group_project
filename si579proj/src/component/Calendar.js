@@ -63,7 +63,9 @@ const Calendar = () => {
           />
           <WeekView
             startDayHour={7.5}
-            endDayHour={21.5}
+            endDayHour={20.5}
+            cellDuration={60}
+
           />
           <Appointments />
           <AppointmentTooltip

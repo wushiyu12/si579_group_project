@@ -1,9 +1,15 @@
 import Accordion from 'react-bootstrap/Accordion';
 import { useBackPack } from './BackPackContext';
-import { Button } from 'react-bootstrap';
+import { Button,Card,Col,Row,Container } from 'react-bootstrap';
+import { getTime } from '../util/getTime';
 
 const CalendarList = () => {
     const { backpack, addToBackpack, removeFromBackpack } = useBackPack();
+    let unit = 0;
+    backpack.forEach(course => {
+        unit += (Number.isInteger(course.Credits) ? course.Credits : 0);
+    });
+
     // const [scrollY, setScrollY] = useState(0);
     // const test = () => {console.log(backpack)}
     const Weekday = {
@@ -14,11 +20,11 @@ const CalendarList = () => {
         'F': 'Friday',
     }
 
-    const getTime = (timestamp) => {
-        const temp = new Date(timestamp);
-        const date = new Date(new Date(temp.setDate(temp.getDate())).toLocaleString('en-US', {timeZone: 'GMT'}))
-        return `${date.getHours() < 10? `0${date.getHours()}` : date.getHours()}:${date.getMinutes() < 10? `0${date.getMinutes()}` : date.getMinutes()}:${date.getSeconds() < 10? `0${date.getSeconds()}` : date.getSeconds()}`;
-    };
+    // const getTime = (timestamp) => {
+    //     const temp = new Date(timestamp);
+    //     const date = new Date(new Date(temp.setDate(temp.getDate())).toLocaleString('en-US', {timeZone: 'GMT'}))
+    //     return `${date.getHours() < 10? `0${date.getHours()}` : date.getHours()}:${date.getMinutes() < 10? `0${date.getMinutes()}` : date.getMinutes()}:${date.getSeconds() < 10? `0${date.getSeconds()}` : date.getSeconds()}`;
+    // };
 
     // useEffect(() => {
     //     const handleScroll = () => {
@@ -32,12 +38,28 @@ const CalendarList = () => {
     //         // console.log(scrollY);
     //     };
     // }, [scrollY]);
-
     return (
         <>
         {/* <div style={{ marginTop: `${scrollY / 16}rem`, height: '50vh', border: 'dashed 1px'}}> */}
-        <div>
-            Backpack
+        <Card> 
+            <Card.Title className="fs-5 my-2 p-3" >Backpack</Card.Title>
+            <p>
+                <strong  style={{fontSize: "2em"}}>
+                {backpack.length}
+                </strong>
+
+                <span style={{ marginRight: "30px"}}>
+                    Course
+                </span>
+
+                <strong style={{fontSize: "2em"}}>
+                    {unit}
+                </strong>
+
+                <span>
+                    Unit
+                </span>
+            </p>
             <Accordion alwaysOpen>
                 {backpack.map((obj, index) => 
                     <Accordion.Item eventKey={index} key={index}>
@@ -60,7 +82,7 @@ const CalendarList = () => {
                     </Accordion.Item>
                 )}
             </Accordion>
-        </div>
+        </Card>
         </>
     )
 };
