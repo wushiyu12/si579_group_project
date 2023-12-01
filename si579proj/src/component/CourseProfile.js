@@ -16,7 +16,9 @@ const CourseProfile = (props) => {
   });
 
   const handelCloseClick  = () => {
-    props.setDispaly(false);
+    if(props.setDisplay){
+    props.setDisplay(false);
+    }
   }
 
   const displayCredits = props.chooseRes.Credits > 4 ? 'TBA' : props.chooseRes.Credits;
