@@ -62,8 +62,8 @@ const Calendar = () => {
             onCurrentViewNameChange={setCurrentViewName}
           />
           <WeekView
-            startDayHour={7.5}
-            endDayHour={20.5}
+            startDayHour={8}
+            endDayHour={21}
             cellDuration={60}
 
           />
