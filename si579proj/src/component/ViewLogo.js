@@ -18,16 +18,18 @@ const ViewLogo = ({ pageName, description, address, buttonText, iconContent}) =>
     return (
         <div style={{width:'350px' , height: '400px', borderRadius:'5%', backgroundColor:'white', display:'flex',flexDirection:'column',justifyContent:'space-between'}} className=' mx-auto p-3 my-3'>
             <div>
-            <div style={{fontWeight:'bold', color:'#0d47a1',fontSize: 25, padding:'15px'}} >{pageName}</div>
-            <p style={{color:'#2196f3'}}>___________________________________</p>
+            <div style={{fontWeight:'bold', color:'#1565c0',fontSize: 25, padding:'15px'}} >{pageName}</div>
+            <p style={{color:'#1565c0'}}>___________________________________</p>
             <div>
             {description}
             </div>
             </div>
-            <div style={{display:'flex', flexDirection:'row', justifyContent:'center'}}>
-            {iconContent}
+            <div>
+              <div style={{display:'flex', flexDirection:'row', justifyContent:'center',paddingBottom:'22%'}}>
+              {iconContent}
+              </div>
+              <Button variant="outline-primary" onClick={handleNavigation}>{buttonText}</Button>
             </div>
-          <Button variant="outline-primary" onClick={handleNavigation}>{buttonText}</Button>
         </div>
   
     );
