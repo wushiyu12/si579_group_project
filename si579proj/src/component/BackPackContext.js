@@ -12,8 +12,14 @@ const BackPackProvider = ({ children }) => {
   // notice useState take the default value as an arg
   // using the return in arrow function to set to init different value
   const [backpack, setBackpack] = useState(() => {
-    const localData = localStorage.getItem('backpack');
-    return localData ? JSON.parse(localData) : [];
+
+    let localData = [];
+    if(localStorage.getItem('backpack')){
+      localData = localStorage.getItem('backpack');
+      localData = JSON.parse(localData);
+    }    
+
+    return localData;
   });
 
 

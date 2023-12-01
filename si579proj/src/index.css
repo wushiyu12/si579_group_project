@@ -11,3 +11,23 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+:global {
+
+  .Cell-dayOfWeek{
+    font-size: 1.5rem;
+  }
+}
+
+.Cell-dayView p {
+  font-size: 1.5rem !important;
+
+}
+
+.Cell-dayOfMonth {
+  display: none;
+}
+
+.Content-text.Content-dateAndTitle {
+  display: none !important;
+}

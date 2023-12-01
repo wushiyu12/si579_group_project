@@ -1,62 +1,73 @@
-// this courseList will need to be changed in later work with the fetch data
 import {courseList} from '../util/course';
-
-// a seperate search logic is needed here
-// since the list view need to include all related course
-
 import CourseCard from './CourseCard';
 import Container from 'react-bootstrap/Container';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import SearchBar from './SearchBar';
-// import CardGroup from 'react-bootstrap/CardGroup';
-// import Row from 'react-bootstrap/Row';
-// import Col from 'react-bootstrap/Col';
+import Pagination from 'react-bootstrap/Pagination';
+import { getTime } from '../util/getTime';
 
-// const CourseCardArea = () => {
-//     return (
-//         <Container>
-//             <Row xs={1} md={2} lg={3}>
-//             {courseList.map((course) => <Col><CourseCard code={course['code']} title={course['Course Title']} description={course['Course Description']} /></Col>)}
-//             </Row>
-//         </Container>
-//     )
-// };
 
 const CourseCardArea = () => {
-    const [courses, setCourses] = useState(courseList);
-    const courseListCP = courseList;
 
+    const [courses, setCourses] = useState(courseList);
+    const [page, setPage] = useState(0) 
+
+    const getDay = (dayString) => {
+        dayString = dayString.replace(/'/g, '"');
+        // Parse the string to get the array
+        let array = JSON.parse(dayString);
+        // Join the array elements with a space
+        let result = array.join(" ");
+        return(result)
+    }
 
     return (
         <>
         <Container>
+        <div style={{ width: '800px' }} className='mx-auto p-3 my-3 justify-content-around'>
             <SearchBar setParentRes = {setCourses} renderDropDowm = {false} ></SearchBar>
+        </div>
         </Container>
+
         <Container><div className = "row justify-content-center">
 
-            {/* force to render if no search results */}
-            {courses.length === 0 && courseListCP.map((course, index) => 
-                    <div className = "col-auto mb3" key = {course['code']} >
-                        <CourseCard  
-                            code = {course['code']} 
-                            title = {course['Course Title']} 
-                            description = {course['Course Description']} 
-                            credits = {course['Credits']}
-                        />
-                    </div>
-                )}
-
-            {courses.map((course, index) => 
-                <div className = "col-auto mb3" key = {course['code']} >
+            {/* I have a strong desier to just pass in an obj
+            But life is short... */}
+            {courses.length === 0 && <div>No Result match your Input!</div>}
+            {courses.length !== 0 && courses.slice(24*page,24*(page+1)).map((course, index) => 
+                <div className = "col-auto mb3" key = {index} >
                     <CourseCard  
-                        code = {course['code']} 
-                        title = {course['Course Title']} 
+                        code = {`${course['code']} Sec ${course['Sec']}`}
+                        title = {course['Course Title']}
                         description = {course['Course Description']} 
                         credits = {course['Credits']}
+                        preReq = {course['Current Enforced Prerequisites']}
+                        start = {getTime(course["Start"])}
+                        end = {getTime(course["Start"])}
+                        instr = {course["Instr"]}
+                        day = {getDay(course["Date"])}
+                        room = {course["Room"]}
                     />
                 </div>
-            )}
+            )}       
+        
+        <div className="row">
+            <div className="col text-center">
+                <Pagination style = {{"justifyContent": "center"}}>
+                    {/* dynamicly change the page number based on searched course */}
+                    {[...Array(Math.ceil(courses.length/24) > 0 ? Math.ceil(courses.length/24) :1)]
+                    .map((_, index) => (
+                        <Pagination.Item key={index + 1} active={index === page} 
+                                         onClick = {(e) => {setPage(Number(e.target.innerText)-1)}}>
+                            {index + 1}
+                        </Pagination.Item>
+                    ))}
+                </Pagination>
+            </div>
+        </div>
+
         </div></Container>
+
         </>
     )
 };

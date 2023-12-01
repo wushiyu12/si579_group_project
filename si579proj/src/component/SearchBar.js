@@ -19,12 +19,18 @@ const SearchBar = (props) => {
         setSearchMod(eventKey);
     }
 
-    const checkInput = (e) => {
-        setInputValue(e.target.value);
+    const checkInput = (value) => {
+        setInputValue(value);
     }
 
-    // Reacts to changes in inputValue and searchMod
+    // reset the parent display 
+    // after a single user input
+    const handelCloseReset  = () => {
+        if (props.setDisplay){
+        props.setDisplay(true);}
+      }
 
+    // Reacts to changes in inputValue and searchMod
     // using props.setParentRes to save all match obj in an Array
 
     useEffect(() => {
@@ -40,6 +46,10 @@ const SearchBar = (props) => {
             if (props.setParentRes){
                 props.setParentRes(temp)
             }
+        }
+        if (inputValue.length === 0 && props.setParentRes) {
+            setResults(courseList);
+            props.setParentRes(courseList);
         }
     }, [inputValue, searchMod]); 
 
@@ -79,7 +89,12 @@ const SearchBar = (props) => {
             <Form.Control
             type="search"
             value = {inputValue}
-            onChange={checkInput}
+
+            // reset the display after user input
+            onChange={(e) => {
+                checkInput(e.target.value);
+            }
+            }
             placeholder="Search for Course"
             />
         </InputGroup> 
@@ -89,8 +104,10 @@ const SearchBar = (props) => {
             {results.length >0 && 
              results.slice(0, 5).map((course, index) => 
                 <ListGroup.Item action key = {index}
-                                onClick={() => chooseResult(course)}>
-                    {`${course.code} ${course['Course Title']}`}
+                                onClick={() => {chooseResult(course);
+                                                handelCloseReset();
+                                }}>
+                    {`${course.code} Sec ${course['Sec']} ${course['Course Title']}`}
                 </ListGroup.Item>
             )}
         </ListGroup>
@@ -105,7 +122,6 @@ const SearchBar = (props) => {
         </Dropdown.Toggle>
 
         <Dropdown.Menu>
-        {/* {searchMod} will be changed later  */}
                 <Dropdown.Item eventKey="searchCode">Seacrch by Name</Dropdown.Item>
                 <Dropdown.Item eventKey="searchDes">Seacrch by Description</Dropdown.Item>
             </Dropdown.Menu>
