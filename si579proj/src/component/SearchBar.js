@@ -26,8 +26,8 @@ const SearchBar = (props) => {
     // reset the parent display 
     // after a single user input
     const handelCloseReset  = () => {
-        if (props.setDispaly){
-        props.setDispaly(true);}
+        if (props.setDisplay){
+        props.setDisplay(true);}
       }
 
     // Reacts to changes in inputValue and searchMod
