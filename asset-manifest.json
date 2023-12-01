@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/si579_group_project/static/css/main.707b40de.css",
+    "main.js": "/si579_group_project/static/js/main.35ebdfd1.js",
+    "index.html": "/si579_group_project/index.html",
+    "main.707b40de.css.map": "/si579_group_project/static/css/main.707b40de.css.map",
+    "main.35ebdfd1.js.map": "/si579_group_project/static/js/main.35ebdfd1.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.707b40de.css",
+    "static/js/main.35ebdfd1.js"
+  ]
+}
