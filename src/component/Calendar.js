@@ -57,7 +57,7 @@ const Calendar = () => {
           data={data}
         >
           <ViewState
-            defaultCurrentDate="2023-11-23"
+            defaultCurrentDate="2023-11-30"
             currentViewName={currentViewName}
             onCurrentViewNameChange={setCurrentViewName}
           />
