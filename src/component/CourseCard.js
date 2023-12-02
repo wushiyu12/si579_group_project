@@ -37,7 +37,7 @@ const CourseCard = (props) => {
             <Offcanvas show={show} onHide={handleClose} style={customOffcanvasStyles}>
 
               <Offcanvas.Header closeButton>
-                <Offcanvas.Title style={{fontWeight:'bold'}}>{props.title}</Offcanvas.Title>
+                <Offcanvas.Title style={{fontWeight:'bold'}}>{`${props.code} ${props.title}`}</Offcanvas.Title>
               </Offcanvas.Header>
 
               <Offcanvas.Header className='py-0'>
