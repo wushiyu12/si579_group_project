@@ -44,7 +44,7 @@ const CourseCardArea = () => {
                         credits = {course['Credits']}
                         preReq = {course['Current Enforced Prerequisites']}
                         start = {getTime(course["Start"])}
-                        end = {getTime(course["Start"])}
+                        end = {getTime(course["End"])}
                         instr = {course["Instr"]}
                         day = {getDay(course["Date"])}
                         room = {course["Room"]}
