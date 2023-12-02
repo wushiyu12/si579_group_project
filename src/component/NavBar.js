@@ -3,7 +3,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import { Link , useLocation} from "react-router-dom";
 
-const NavBar = (props) => {
+const NavBar = () => {
   const location = useLocation();
 
     const isActive = (pathname) => location.pathname === pathname;

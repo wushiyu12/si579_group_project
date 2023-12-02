@@ -17,7 +17,7 @@ const BackPackProvider = ({ children }) => {
     if(localStorage.getItem('backpack')){
       localData = localStorage.getItem('backpack');
       localData = JSON.parse(localData);
-    }    
+    }
 
     return localData;
   });

@@ -115,6 +115,8 @@ const MapView = () => {
                             }}>
                                 <Popup>
                                     {`${obj['code']} Sec ${obj['Sec']}`}
+                                    <br />
+                                    <strong>Location: </strong>{obj['Room']}
                                 </Popup>
                             </Marker>
                         )}

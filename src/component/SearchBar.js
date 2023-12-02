@@ -4,13 +4,14 @@ import { useState, useEffect} from 'react';
 import {courseList} from '../util/course';
 import { searchCode } from '../util/searchCode';
 import { searchDes } from '../util/searchDes';
+import { validate } from '../util/validate';
 
 // this component take a obj course list as arg
 // use props.setChooseRes to pass its choosen res to 
 // parent component
 
 const SearchBar = (props) => {
-
+    const validCourseList = validate(courseList);
     const [results, setResults] = useState([])
     const [inputValue, setInputValue] = useState('');
     const [searchMod, setSearchMod] = useState('searchCode');
@@ -35,21 +36,21 @@ const SearchBar = (props) => {
 
     useEffect(() => {
         if (searchMod === 'searchCode') {
-            const temp = searchCode(courseList, inputValue);
+            const temp = searchCode(validCourseList, inputValue);
             setResults(temp);
             if (props.setParentRes){
                 props.setParentRes(temp);
             }
         } else {
-            const temp = searchDes(courseList, inputValue);
+            const temp = searchDes(validCourseList, inputValue);
             setResults(temp);
             if (props.setParentRes){
                 props.setParentRes(temp)
             }
         }
         if (inputValue.length === 0 && props.setParentRes) {
-            setResults(courseList);
-            props.setParentRes(courseList);
+            setResults(validCourseList);
+            props.setParentRes(validCourseList);
         }
     }, [inputValue, searchMod]); 
 
