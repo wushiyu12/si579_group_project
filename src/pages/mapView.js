@@ -3,14 +3,10 @@ import NavBar from '../component/NavBar';
 import 'leaflet/dist/leaflet.css'; 
 import L from 'leaflet';
 import {Col,Row,Container } from 'react-bootstrap';
-import CalendarList from '../component/CalendarList';
-import MapArea from '../component/MapArea';
 import Accordion from 'react-bootstrap/Accordion';
 import { useBackPack } from '../component/BackPackContext';
 import { Button,Card } from 'react-bootstrap';
 import { getTime } from '../util/getTime';
-// import * as React from 'react';
-// import { useBackPack } from './BackPackContext';
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import 'leaflet/dist/leaflet.css'; 
 
@@ -23,7 +19,7 @@ L.Icon.Default.mergeOptions({
 });
 
 const MapView = () => {
-  const { backpack, removeFromBackpack } = useBackPack();
+  const { backpack } = useBackPack();
   const [activePopup, setActivePopup] = useState(null);
 
     let unit = 0;
@@ -52,7 +48,6 @@ const MapView = () => {
             <Container style={{paddingTop:'2%'}}>
                 <Row>
                     <Col xs={12} md={3} lg={3}>
-                        {/* <CalendarList /> */}
                         <Card> 
             <Card.Title className="fs-5 my-2 p-3" >Backpack</Card.Title>
             <p>
@@ -100,7 +95,6 @@ const MapView = () => {
         </Card>
                     </Col>
                     <Col xs={12} md={9} lg={9}>
-                      {/* <MapArea/> */}
                       <MapContainer center={[42.277912, -83.734255]} zoom={15} scrollWheelZoom={false} style={{padding:'10%',height: '600px'}}>
                         <TileLayer
                             attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -115,6 +109,8 @@ const MapView = () => {
                             }}>
                                 <Popup>
                                     {`${obj['code']} Sec ${obj['Sec']}`}
+                                    <br />
+                                    <strong>Location: </strong>{obj['Room']}
                                 </Popup>
                             </Marker>
                         )}

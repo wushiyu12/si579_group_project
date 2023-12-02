@@ -6,11 +6,7 @@ import mapView from './pages/mapView';
 import calendarView from './pages/CalendarView';
 import { Routes, Route } from 'react-router-dom';
 import { BackPackProvider } from './component/BackPackContext';
-// import { createContext } from 'react';
-// import CourseCard from './component/CourseCard';
-// import NavBar from './component/NavBar';
-// import CourseCardArea from './component/CourseCardArea';
-// import Main from './Main';
+
 
 const App = () => {
 
@@ -23,7 +19,6 @@ const App = () => {
             <Route path='/mapView' Component={mapView}></Route>
             <Route path='/calendarView' Component={calendarView}></Route>
           </Routes>
-        {/* <Main /> */}
       </div>
     </BackPackProvider>
   );

@@ -5,10 +5,6 @@ import {getTime} from '../util/getTime';
 
 const CourseProfile = (props) => {
 
-  // call use useBackPack function and it will return
-  // <BackPackContext.Provider value={value}>
-  // const value = { backpack, addToBackpack, removeFromBackpack };
-
   const { backpack, addToBackpack, removeFromBackpack } = useBackPack();
 
   const checkInBackpack = backpack.some(obj => {

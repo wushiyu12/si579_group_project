@@ -5,11 +5,12 @@ import { useState } from 'react';
 import SearchBar from './SearchBar';
 import Pagination from 'react-bootstrap/Pagination';
 import { getTime } from '../util/getTime';
+import { validate } from '../util/validate';
 
 
 const CourseCardArea = () => {
-
-    const [courses, setCourses] = useState(courseList);
+    const validCourseList = validate(courseList);
+    const [courses, setCourses] = useState(validCourseList);
     const [page, setPage] = useState(0) 
 
     const getDay = (dayString) => {
